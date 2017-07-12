@@ -1,0 +1,17 @@
+h1 {
+  font-size: 200%;
+  font-style: italic;
+  color: darkblue;
+}
+
+form {
+    font-size: 110%;
+    font-weight: bold ;
+    font-family: sans-serif ;
+    color: darkblue;
+}
+
+table {
+      border: 4px outset darkblue;
+        border-spacing: 5px;
+}
