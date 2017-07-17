@@ -9,6 +9,8 @@ and open the template in the editor.
         <meta charset="UTF-8">
         <title>Запись к врачу</title>
         <link rel="stylesheet" type="text/css" href="style.css">
+  
+       
     </head>
     <body>
         <p><img src="icon175x175.jpeg" alt="крест" align = "right"></p>
@@ -33,10 +35,12 @@ $doctor = get_post($db_server, 'doctor');
 $data = get_post($db_server,'data');
 $time = get_post($db_server,'time');
 
-if (empty($_POST['name'])) {
+
+/*if (empty($_POST['name'])) {
   echo '<p style="color:red">Ошибка ввода</p>'. 
-          mysqli_connect_error();
-          }
+  mysqli_connect_error();
+ 
+          }*/
 
           $query = "INSERT INTO patient VALUES" .
 "('$name', '$doctor', '$data', '$time')";
@@ -47,8 +51,8 @@ if (!mysqli_query($db_server, $query)) {
 }
 ?>
 
-<form action="index.php" method="post"><pre>
-Ф.И.О пациента    <input type="text" name="name" />
+<form action="index.php" method="post" id="form"><pre>
+Ф.И.О пациента    <input type="text" onKeyUp="if(/[^a-zA-Zа-яА-ЯёЁ .]/i.test(this.value)){this.value='';}" id="name" name="name"  required>
 
 <?php
 $sql2 = "SELECT * FROM doctors";
@@ -98,5 +102,10 @@ function get_post($db_server, $var)
 return mysqli_real_escape_string($db_server, trim($_POST[$var]));
 }
 ?>
+           <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+           <script src="js/jquery.validate.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/jquery.validate.js"></script>
+        <script src="js/jVal.js"></script>
     </body>
 </html>
